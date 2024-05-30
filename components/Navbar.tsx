@@ -27,7 +27,7 @@ const Navbar: FC = () => {
       <ul
         className={`${
           showNavLinks
-            ? "fixed  w-[45%] right-0 top-0 h-full pt-12  space-y-5 z-40 backdrop-blur-lg bg-red-200"
+            ? "fixed  w-full right-0 top-0 h-full rounded-md pt-16 space-y-6 z-40 backdrop-blur-3xl bg-blue-200/20"
             : "hidden h-full gap-12 lg:flex"
         }`}
       >
