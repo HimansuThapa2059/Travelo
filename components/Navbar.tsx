@@ -9,20 +9,6 @@ import { Menu, X } from "lucide-react";
 const Navbar: FC = () => {
   const [showNavLinks, setShowNavLinks] = useState(false);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setShowNavLinks(window.innerWidth < 1024);
-    };
-
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
     <nav className="flexBetween max-container padding-container py-5 z-30">
       <Link href="/">
@@ -37,19 +23,21 @@ const Navbar: FC = () => {
           onClick={() => setShowNavLinks((show) => !show)}
         />
       )}
-      {showNavLinks && (
-        <X
-          className="h-8 w-8  cursor-pointer inline-block lg:hidden z-50"
-          onClick={() => setShowNavLinks((show) => !show)}
-        />
-      )}
+
       <ul
         className={`${
           showNavLinks
-            ? "fixed  w-[45%] right-0 top-0 h-full pt-20  space-y-5 z-40 backdrop-blur-lg bg-red-200"
+            ? "fixed  w-[45%] right-0 top-0 h-full pt-12  space-y-5 z-40 backdrop-blur-lg bg-red-200"
             : "hidden h-full gap-12 lg:flex"
         }`}
       >
+        {showNavLinks && (
+          <X
+            className="h-8 w-8  cursor-pointer inline-block  z-50 fixed top-[18px] right-[24px]"
+            onClick={() => setShowNavLinks((show) => !show)}
+          />
+        )}
+
         {NAV_LINKS.map((link) => (
           <Link
             href={link.href}
